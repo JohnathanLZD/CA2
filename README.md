@@ -63,3 +63,12 @@ It reads these JSON fields from the PLC:
 |`confirmation_message`	| Operator-facing confirmation message |
 |`warning_message`	| Maximum-volume warning |
 |`maintenance_message`	| Sensor-error maintenance message |
+The dashboard displays the readings as published by the PLC. It does not change the PLC's analog scaling or recalculate the water volume. The MQTT payload must be valid, complete JSON for the values to update.
+
+## Dashboard refresh rate
+The browser checks for the latest reading every 1 second by default. To change this, edit `CA2/wwwroot/index.html`:
+```javascript
+refresh();
+setInterval(refresh, 1000); // 1000 ms = 1 second
+```
+For example, use `500` for a half-second dashboard refresh. This does not change how often the PLC sends MQTT messages. The PLC's MQTT publish interval must be configured separately in CODESYS.
