@@ -72,3 +72,18 @@ refresh();
 setInterval(refresh, 1000); // 1000 ms = 1 second
 ```
 For example, use `500` for a half-second dashboard refresh. This does not change how often the PLC sends MQTT messages. The PLC's MQTT publish interval must be configured separately in CODESYS.
+
+Project structure
+```text
+CA2\\\_Dam\\\_Valve\\\_Monitor/
+├── CA2.slnx                 # Visual Studio solution
+├── Run\\\_CA2\\\_Dashboard.bat    # Windows startup script
+├── README.md                # This guide
+└── CA2/
+    ├── CA2.csproj           # .NET project and MQTTnet dependency
+    ├── Program.cs           # MQTT subscriber, JSON parsing and web API
+    ├── Properties/
+    │   └── launchSettings.json
+    └── wwwroot/
+        └── index.html       # Dark-mode dashboard
+```
