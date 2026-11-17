@@ -11,3 +11,21 @@ The dashboard is for monitoring and demonstration only. It does not send command
 - MQTT connection feedback: Shows whether the app is connected and when it last received a message.
 
 The tank is drawn on a 0–1,000,000 m³ scale, with 700,000 m³ as the indicated limit. If the PLC sends a larger value, the numerical reading remains visible while the graphic is capped at full.
+
+System overview
+```text
+Function generator + sensor (DI2) + button (DI1)
+                        |
+                        v
+           WAGO Compact Controller 100
+                        |
+                  MQTT publish
+                        |
+                  MQTT broker
+                        |
+              CA2 ASP.NET Core app
+                        |
+              Local dark dashboard
+```
+              http://localhost:5188
+```
