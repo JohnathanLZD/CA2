@@ -40,9 +40,9 @@ No database, Blazor, or MudBlazor is required.
 1. Download or clone the repository and open the CA2 Dam Valve Monitor project directory.
 2. Open `CA2.slnx` in Visual Studio with the .NET 10 SDK installed.
 3. Restore the NuGet packages if Visual Studio asks.
-4. Start the `CA2` project, or run `Run\\\_CA2\\\_Dashboard.bat` from the project directory on Windows.
+4. Start the `CA2` project, or run `Run_CA2_Dashboard.bat` from the project directory on Windows.
 5. Open http://localhost:5188 in a browser.
-6. Keep the app running to receive new MQTT messages. Look for `\\\[CONNECTED]` and `MESSAGE #...` in its console window.
+6. Keep the app running to receive new MQTT messages. Look for `[CONNECTED]` and `MESSAGE #...` in its console window.
 Make sure your computer can reach the MQTT broker used by the PLC.
 
 ## MQTT data
