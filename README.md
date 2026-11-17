@@ -75,9 +75,9 @@ For example, use `500` for a half-second dashboard refresh. This does not change
 
 Project structure
 ```text
-CA2\\\_Dam\\\_Valve\\\_Monitor/
+CA2_Dam_Valve_Monitor/
 - CA2.slnx                 # Visual Studio solution
-  Run\\\_CA2\\\_Dashboard.bat    # Windows startup script
+  Run_CA2_Dashboard.bat    # Windows startup script
   README.md                # This guide
   CA2/
   - CA2.csproj           # .NET project and MQTTnet dependency
@@ -87,3 +87,15 @@ CA2\\\_Dam\\\_Valve\\\_Monitor/
     wwwroot/
       - index.html       # dashboard
 ```
+
+## Troubleshooting
+- Dashboard says disconnected: Confirm that the broker is reachable and inspect the console for `[MQTT ERROR]`.
+- Console connects but no values appear: Check that the PLC is publishing to the exact MQTT topic above.
+- Console receives messages but dashboard is blank: Open http://localhost:5188/api/reading to inspect the latest received data.
+- Invalid JSON warning: Check the PLC's complete MQTT payload; incomplete/truncated JSON cannot be parsed.
+- Water volume looks too high: Check the analog scaling inside CODESYS. This dashboard only displays the value sent by the PLC.
+- Button lamp does not change: Confirm the PLC publishes the `confirm_button` key and that the MQTT publish interval is fast enough to capture the press.
+
+## Security and scope
+Before pushing this project to GitHub: The current `CA2/Program.cs` contains MQTT connection settings, including credentials. Move secrets out of source code (for example, to environment variables, with corresponding changes in `Program.cs`) and review your commit history before sharing. A `.gitignore` does not protect secrets that are already committed. Rotate any credentials previously published in a repository.
+This is an educational monitoring prototype. It is not an independently validated dam safety system and must not be used to operate physical release valves.
