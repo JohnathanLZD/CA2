@@ -50,3 +50,16 @@ The app subscribes to:
 ```text
 beaver-iot/mqtt@default/mqtt-device/plc047
 ```
+It reads these JSON fields from the PLC:
+|JSON field	| Used for |
+| --- | --- |
+|`device\\\_id`	| Device identification (`plc047`) |
+|`sensor\\\_pnp`	| DI2 sensor lamp: `0` off, `1` triggered |
+|`1confirm\\\_button`	| DI1 button lamp: `0` released, `1` pressed |
+|`voltage`	| PLC's published analog reading |
+|`water\\\_volume\\\_m3`	| Numerical volume and tank level |
+|`system\\\_status`	| Overall PLC state (`NORMAL`, `EMERGENCY`, `SENSOR\\\_ERROR`) |
+|`confirmation\\\_status`	| Confirmation state (`WAIT\\\_FOR\\\_ACTION`, `CONFIRMED`, `OVERRIDDEN`) |
+|`confirmation\\\_message`	| Operator-facing confirmation message |
+|`warning\\\_message`	| Maximum-volume warning |
+|`maintenance\\\_message`	| Sensor-error maintenance message |
